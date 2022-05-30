@@ -9,8 +9,12 @@ import web.service.CarService;
 
 @Controller
 public class CarController {
-    @Autowired
     private CarService carService;
+
+    @Autowired
+    public CarController(CarService carService) {
+        this.carService = carService;
+    }
 
     @GetMapping("/cars")
     public String index(@RequestParam(value = "count", defaultValue = "5", required = false) int count,
